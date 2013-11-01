@@ -1,9 +1,11 @@
 package me.naidenov.organizer;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -18,17 +20,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import me.naidenov.organizer.persister.*;
 
 public class RegisterActivity extends Activity implements OnClickListener{
 	
@@ -37,6 +39,7 @@ public class RegisterActivity extends Activity implements OnClickListener{
 	private EditText editorText_password;
 	private EditText editorText_rePassword;
 	private String registerModel;
+	private ProgressDialog progress;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,8 +68,6 @@ public class RegisterActivity extends Activity implements OnClickListener{
 			String rePassword = String.valueOf(editorText_rePassword.getText());
 			
 			if (!password.equals(rePassword)) {
-				editorText_password.setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
-				editorText_rePassword.setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
 				Toast.makeText(this, "Authentication Failed...", Toast.LENGTH_SHORT).show();
 				return;
 			}
@@ -81,12 +82,10 @@ public class RegisterActivity extends Activity implements OnClickListener{
 			
 			JSONObject object = new JSONObject();
 			try {
-
 				object.put("email", email);
 				object.put("authCode", authCode);
 
 			} catch (Exception ex) {
-
 			}
 			
 			registerModel = object.toString();
@@ -136,9 +135,21 @@ public class RegisterActivity extends Activity implements OnClickListener{
 			JSONObject obj;
 			try {
 				obj = new JSONObject(result);
-				Log.d("JSON", obj.getString("sessionKey"));
-				Log.d("JSON", obj.getString("email"));
+				String sessionKey = obj.getString("sessionKey");
+				
+				OutputStream os = openFileOutput("sessionKey", Context.MODE_PRIVATE);
+				os.write(sessionKey.getBytes());
+				os.close();
+				
+				Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+				startActivity(intent);
 			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -148,15 +159,20 @@ public class RegisterActivity extends Activity implements OnClickListener{
 
 		@Override
 		protected void onPostExecute(Void result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
+//			UserDb userDb = ((OrganizerApplication)getApplication()).getUserDb();
+//			
+//			userDb.addUser(email, authCode, sessionKey);
+			progress.dismiss();
 		}
 
 		@Override
-		protected void onProgressUpdate(Void... values) {
+		protected void onPreExecute() {
 			// TODO Auto-generated method stub
-			super.onProgressUpdate(values);
-		}		
+			super.onPreExecute();
+			progress = ProgressDialog.show(RegisterActivity.this, "Wait", "Please wait");
+			progress.show();
+		}	
+		
 	}
 	
 	static String sha1(String input) throws NoSuchAlgorithmException {

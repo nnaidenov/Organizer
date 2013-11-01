@@ -1,5 +1,12 @@
 package me.naidenov.organizer.database;
 
-public class TodoDb {
+import android.database.sqlite.SQLiteDatabase;
 
+public class TodoDb {
+	private SQLiteDatabase db;
+	private static final String TABLE_NAME = "todos";
+
+	public TodoDb(SQLiteDatabase db) {
+		this.db = db;
+	}
 }

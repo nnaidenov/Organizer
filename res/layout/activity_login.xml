@@ -5,25 +5,28 @@
     android:orientation="vertical" >
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/editText_email_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10" >
+        android:ems="10"
+        android:hint="@string/editText_email"
+        android:inputType="textEmailAddress" >
 
         <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editText_password_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="numberPassword" />
+        android:hint="@string/editText_password"
+        android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="@string/button_login" />
 
 </LinearLayout>

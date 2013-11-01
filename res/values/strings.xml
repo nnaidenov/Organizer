@@ -3,6 +3,7 @@
 
     <string name="app_name">Organizer</string>
     <string name="action_settings">Settings</string>
+    <string name="action_logout">Logout</string>
 
     <string name="button_login">Login</string>
     <string name="button_register">Register</string>
@@ -13,4 +14,8 @@
     <string name="editText_email">Email</string>
     <string name="editText_password">Password</string>
    	<string name="editText_rePassord">Re-Password</string>
+   	
+    <string name="button_create_toDo_view">New To Do</string>
+    <string name="button_create_event_view">New Event</string>
+   	<string name="button_create_note_view">New Note</string>
 </resources>
