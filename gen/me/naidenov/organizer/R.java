@@ -25,28 +25,37 @@ public final class R {
         public static final int logout=0x7f020001;
     }
     public static final class id {
-        public static final int action_logout=0x7f08000e;
-        public static final int action_settings=0x7f08000f;
-        public static final int button_create_event_view=0x7f080002;
-        public static final int button_create_note_view=0x7f080004;
-        public static final int button_create_todo_view=0x7f080001;
-        public static final int button_login=0x7f080007;
-        public static final int button_login_view=0x7f080008;
-        public static final int button_register=0x7f08000d;
-        public static final int button_register_view=0x7f080009;
-        public static final int editText_email_login=0x7f080005;
-        public static final int editText_email_register=0x7f08000a;
-        public static final int editText_password_login=0x7f080006;
-        public static final int editText_password_register=0x7f08000b;
-        public static final int editText_rePassword_register=0x7f08000c;
-        public static final int tableRow1=0x7f080000;
-        public static final int tableRow2=0x7f080003;
+        public static final int action_logout=0x7f080016;
+        public static final int action_settings=0x7f080017;
+        public static final int button_calendar_view=0x7f080009;
+        public static final int button_create_event_view=0x7f08000b;
+        public static final int button_create_note_view=0x7f08000c;
+        public static final int button_create_todo_back=0x7f080008;
+        public static final int button_create_todo_save=0x7f080007;
+        public static final int button_create_todo_view=0x7f08000a;
+        public static final int button_login=0x7f08000f;
+        public static final int button_login_view=0x7f080010;
+        public static final int button_register=0x7f080015;
+        public static final int button_register_view=0x7f080011;
+        public static final int button_todo_pick_date=0x7f080003;
+        public static final int editText_email_login=0x7f08000d;
+        public static final int editText_email_register=0x7f080012;
+        public static final int editText_password_login=0x7f08000e;
+        public static final int editText_password_register=0x7f080013;
+        public static final int editText_rePassword_register=0x7f080014;
+        public static final int editText_todo_description=0x7f080002;
+        public static final int editText_todo_title=0x7f080001;
+        public static final int ratingBar_todo_priority=0x7f080006;
+        public static final int scrollView1=0x7f080000;
+        public static final int spinner_todo_reminder=0x7f080004;
+        public static final int textView_create_todo_priority=0x7f080005;
     }
     public static final class layout {
-        public static final int activity_home=0x7f030000;
-        public static final int activity_login=0x7f030001;
-        public static final int activity_main=0x7f030002;
-        public static final int activity_register=0x7f030003;
+        public static final int activity_create_todo=0x7f030000;
+        public static final int activity_home=0x7f030001;
+        public static final int activity_login=0x7f030002;
+        public static final int activity_main=0x7f030003;
+        public static final int activity_register=0x7f030004;
     }
     public static final class menu {
         public static final int loged_in=0x7f070000;
@@ -56,16 +65,23 @@ public final class R {
         public static final int action_logout=0x7f050002;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
-        public static final int button_create_event_view=0x7f05000b;
-        public static final int button_create_note_view=0x7f05000c;
-        public static final int button_create_toDo_view=0x7f05000a;
+        public static final int button_calendar_view=0x7f05000a;
+        public static final int button_create_event_view=0x7f05000c;
+        public static final int button_create_note_view=0x7f05000d;
+        public static final int button_create_todo_back=0x7f050013;
+        public static final int button_create_todo_save=0x7f050012;
+        public static final int button_create_todo_view=0x7f05000b;
         public static final int button_login=0x7f050003;
+        public static final int button_pick_date=0x7f05000f;
         public static final int button_register=0x7f050004;
+        public static final int editText_description=0x7f050010;
         public static final int editText_email=0x7f050007;
         public static final int editText_password=0x7f050008;
         public static final int editText_rePassord=0x7f050009;
+        public static final int editText_title=0x7f05000e;
         public static final int textEditor_password=0x7f050006;
         public static final int textEditor_username=0x7f050005;
+        public static final int textView_create_todo_priority=0x7f050011;
     }
     public static final class style {
         /** 

@@ -30,8 +30,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		buttonLogin = (Button) findViewById(R.id.button_login_view);
 		buttonLogin.setOnClickListener(this);
 	}
-	
-	
 
 	@Override
 	protected void onResume() {

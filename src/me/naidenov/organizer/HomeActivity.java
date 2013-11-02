@@ -20,17 +20,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class HomeActivity extends Activity implements OnClickListener {
 
 	private ProgressDialog progress;
+	private Button createTodo; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
+		
+		createTodo = (Button) findViewById(R.id.button_create_todo_view);
+		createTodo.setOnClickListener(this);
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -40,9 +45,11 @@ public class HomeActivity extends Activity implements OnClickListener {
 	}
 
 	@Override
-	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
-
+	public void onClick(View view) {
+		if (view.getId() == R.id.button_create_todo_view) {
+			Intent intent = new Intent(HomeActivity.this, CreateTodoActivity.class);
+			startActivity(intent);
+		}
 	}
 
 	@Override
