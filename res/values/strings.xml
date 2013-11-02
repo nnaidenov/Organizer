@@ -23,7 +23,18 @@
   	<string name="editText_title">Title</string>
    	<string name="button_pick_date">Choose date</string>
    	<string name="editText_description">Description</string>
-    <string name="spinner_reminder_title">When remineded</string>
+   	<string name="textView_create_todo_priority">Priority</string>
+   	<string name="radio_todo_pririty_A">A</string>
+   	<string name="radio_todo_pririty_B">B</string>
+   	<string name="radio_todo_pririty_C">C</string>
+   	<string name="radio_todo_pririty_D">D</string>
+  	<string name="radio_todo_pririty_E">E</string>
+   	
+  	<string name="textView_event_whole_day">Whole day</string>
+  	<string name="textView_event_start_time">Start time</string>
+  	<string name="button_time">Pick it</string>
+  	<string name="textView_event_end_time">End time</string>
+   	<string name="spinner_reminder_title">When remineded</string>
   	<string-array name="spinner_reminders_values">
    	    <item >On time</item>
   	    <item >5 minutes before</item>
@@ -33,8 +44,7 @@
  	    <item >1 day before</item>
 	    <item >3 days before</item>
    	</string-array>
-   	<string name="textView_create_todo_priority">Priority</string>
    	
-   	<string name="button_create_todo_save">Create</string>
-   	<string name="button_create_todo_back">Cancel</string>
+   	<string name="button_save">Create</string>
+   	<string name="button_back">Cancel</string>
 </resources>

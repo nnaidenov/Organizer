@@ -65,33 +65,33 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:text="A" />
+                android:text="@string/radio_todo_pririty_A" />
 
             <RadioButton
                 android:id="@+id/radio_todo_priority_B"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="B" />
+                android:text="@string/radio_todo_pririty_B" />
 
             <RadioButton
                 android:id="@+id/radio_todo_priority_C"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="C"
+                android:text="@string/radio_todo_pririty_C"
                 android:textAlignment="viewEnd" />
 
             <RadioButton
                 android:id="@+id/radio_todo_priority_D"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="D"
+                android:text="@string/radio_todo_pririty_D"
                 android:textAlignment="viewEnd" />
 
             <RadioButton
                 android:id="@+id/radio_todo_priority_E"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="E"
+                android:text="@string/radio_todo_pririty_E"
                 android:textAlignment="viewEnd" />
         </RadioGroup>
 
@@ -106,14 +106,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:paddingLeft="20dp"
-                android:text="@string/button_create_todo_save" />
+                android:text="@string/button_save" />
 
             <Button
                 android:id="@+id/button_create_todo_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:text="@string/button_create_todo_back" />
+                android:text="@string/button_back" />
         </LinearLayout>
     </LinearLayout>
 

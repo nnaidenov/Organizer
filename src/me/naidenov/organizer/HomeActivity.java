@@ -27,6 +27,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 
 	private ProgressDialog progress;
 	private Button createTodo; 
+	private Button createEvent; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,9 @@ public class HomeActivity extends Activity implements OnClickListener {
 		
 		createTodo = (Button) findViewById(R.id.button_create_todo_view);
 		createTodo.setOnClickListener(this);
+		
+		createEvent = (Button) findViewById(R.id.button_create_event_view);
+		createEvent.setOnClickListener(this);
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -48,6 +52,9 @@ public class HomeActivity extends Activity implements OnClickListener {
 	public void onClick(View view) {
 		if (view.getId() == R.id.button_create_todo_view) {
 			Intent intent = new Intent(HomeActivity.this, CreateTodoActivity.class);
+			startActivity(intent);
+		} else if (view.getId() == R.id.button_create_event_view) {
+			Intent intent = new Intent(HomeActivity.this, CreateEventActivity.class);
 			startActivity(intent);
 		}
 	}
