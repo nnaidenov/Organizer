@@ -1,13 +1,16 @@
 package me.naidenov.organizer;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -36,9 +39,35 @@ public class MainActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onResume();
 		
+		if (!fileExistance("sessionKey")) {
+			OutputStream os = null;
+			try {
+				os = openFileOutput("sessionKey", Context.MODE_PRIVATE);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				os.write(new String().getBytes());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				os.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		FileInputStream os = null;
 		try {
 			os = openFileInput("sessionKey");
+			
+			if (os == null) {
+				
+			}
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -61,8 +90,10 @@ public class MainActivity extends Activity implements OnClickListener {
 			startActivity(intent);
 		}
 	}
-
-
+	public boolean fileExistance(String fname){
+	    File file = getBaseContext().getFileStreamPath(fname);
+	    return file.exists();
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

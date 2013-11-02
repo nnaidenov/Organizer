@@ -8,6 +8,9 @@
 package me.naidenov.organizer;
 
 public final class R {
+    public static final class array {
+        public static final int spinner_reminders_values=0x7f060000;
+    }
     public static final class attr {
     }
     public static final class dimen {
@@ -25,30 +28,35 @@ public final class R {
         public static final int logout=0x7f020001;
     }
     public static final class id {
-        public static final int action_logout=0x7f080016;
-        public static final int action_settings=0x7f080017;
-        public static final int button_calendar_view=0x7f080009;
-        public static final int button_create_event_view=0x7f08000b;
-        public static final int button_create_note_view=0x7f08000c;
-        public static final int button_create_todo_back=0x7f080008;
-        public static final int button_create_todo_save=0x7f080007;
-        public static final int button_create_todo_view=0x7f08000a;
-        public static final int button_login=0x7f08000f;
-        public static final int button_login_view=0x7f080010;
-        public static final int button_register=0x7f080015;
-        public static final int button_register_view=0x7f080011;
-        public static final int button_todo_pick_date=0x7f080003;
-        public static final int editText_email_login=0x7f08000d;
-        public static final int editText_email_register=0x7f080012;
-        public static final int editText_password_login=0x7f08000e;
-        public static final int editText_password_register=0x7f080013;
-        public static final int editText_rePassword_register=0x7f080014;
-        public static final int editText_todo_description=0x7f080002;
-        public static final int editText_todo_title=0x7f080001;
-        public static final int ratingBar_todo_priority=0x7f080006;
-        public static final int scrollView1=0x7f080000;
-        public static final int spinner_todo_reminder=0x7f080004;
-        public static final int textView_create_todo_priority=0x7f080005;
+        public static final int action_logout=0x7f09001b;
+        public static final int action_settings=0x7f09001c;
+        public static final int button_calendar_view=0x7f09000e;
+        public static final int button_create_event_view=0x7f090010;
+        public static final int button_create_note_view=0x7f090011;
+        public static final int button_create_todo_back=0x7f09000d;
+        public static final int button_create_todo_save=0x7f09000c;
+        public static final int button_create_todo_view=0x7f09000f;
+        public static final int button_login=0x7f090014;
+        public static final int button_login_view=0x7f090015;
+        public static final int button_register=0x7f09001a;
+        public static final int button_register_view=0x7f090016;
+        public static final int button_todo_pick_date=0x7f090004;
+        public static final int editText_email_login=0x7f090012;
+        public static final int editText_email_register=0x7f090017;
+        public static final int editText_password_login=0x7f090013;
+        public static final int editText_password_register=0x7f090018;
+        public static final int editText_rePassword_register=0x7f090019;
+        public static final int editText_todo_description=0x7f090002;
+        public static final int editText_todo_title=0x7f090001;
+        public static final int radioGroup_todo_priority=0x7f090006;
+        public static final int radio_todo_priority_B=0x7f090008;
+        public static final int radio_todo_priority_C=0x7f090009;
+        public static final int radio_todo_priority_D=0x7f09000a;
+        public static final int radio_todo_priority_E=0x7f09000b;
+        public static final int radio_todo_pririty_A=0x7f090007;
+        public static final int scrollView1=0x7f090000;
+        public static final int textView_create_todo_priority=0x7f090005;
+        public static final int textView_todo_selected_date=0x7f090003;
     }
     public static final class layout {
         public static final int activity_create_todo=0x7f030000;
@@ -58,8 +66,8 @@ public final class R {
         public static final int activity_register=0x7f030004;
     }
     public static final class menu {
-        public static final int loged_in=0x7f070000;
-        public static final int main=0x7f070001;
+        public static final int loged_in=0x7f080000;
+        public static final int main=0x7f080001;
     }
     public static final class string {
         public static final int action_logout=0x7f050002;
@@ -68,8 +76,8 @@ public final class R {
         public static final int button_calendar_view=0x7f05000a;
         public static final int button_create_event_view=0x7f05000c;
         public static final int button_create_note_view=0x7f05000d;
-        public static final int button_create_todo_back=0x7f050013;
-        public static final int button_create_todo_save=0x7f050012;
+        public static final int button_create_todo_back=0x7f050014;
+        public static final int button_create_todo_save=0x7f050013;
         public static final int button_create_todo_view=0x7f05000b;
         public static final int button_login=0x7f050003;
         public static final int button_pick_date=0x7f05000f;
@@ -79,9 +87,10 @@ public final class R {
         public static final int editText_password=0x7f050008;
         public static final int editText_rePassord=0x7f050009;
         public static final int editText_title=0x7f05000e;
+        public static final int spinner_reminder_title=0x7f050011;
         public static final int textEditor_password=0x7f050006;
         public static final int textEditor_username=0x7f050005;
-        public static final int textView_create_todo_priority=0x7f050011;
+        public static final int textView_create_todo_priority=0x7f050012;
     }
     public static final class style {
         /** 
@@ -105,10 +114,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f070001;
     }
 }

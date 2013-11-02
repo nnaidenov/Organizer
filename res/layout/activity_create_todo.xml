@@ -27,16 +27,23 @@
             android:hint="@string/editText_description"
             android:inputType="textMultiLine" />
 
-        <Button
-            android:id="@+id/button_todo_pick_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_pick_date" />
-
-        <Spinner
-            android:id="@+id/spinner_todo_reminder"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView_todo_selected_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/button_todo_pick_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="showDatePickerDialog"
+                android:text="@string/button_pick_date" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textView_create_todo_priority"
@@ -45,14 +52,53 @@
             android:text="@string/textView_create_todo_priority"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <RatingBar
-            android:id="@+id/ratingBar_todo_priority"
+        <RadioGroup
+            android:id="@+id/radioGroup_todo_priority"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/radio_todo_pririty_A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="A" />
+
+            <RadioButton
+                android:id="@+id/radio_todo_priority_B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="B" />
+
+            <RadioButton
+                android:id="@+id/radio_todo_priority_C"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="C"
+                android:textAlignment="viewEnd" />
+
+            <RadioButton
+                android:id="@+id/radio_todo_priority_D"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="D"
+                android:textAlignment="viewEnd" />
+
+            <RadioButton
+                android:id="@+id/radio_todo_priority_E"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E"
+                android:textAlignment="viewEnd" />
+        </RadioGroup>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="128dp" >
+            android:layout_height="128dp"
+            android:layout_weight="0.94" >
 
             <Button
                 android:id="@+id/button_create_todo_save"
@@ -70,4 +116,5 @@
                 android:text="@string/button_create_todo_back" />
         </LinearLayout>
     </LinearLayout>
+
 </ScrollView>
