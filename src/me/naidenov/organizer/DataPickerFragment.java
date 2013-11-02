@@ -1,18 +1,13 @@
 package me.naidenov.organizer;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
-import android.app.Application;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.text.format.DateFormat;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,7 +45,5 @@ public class DataPickerFragment extends DialogFragment implements
 			Toast.makeText(view.getContext(), "Other", Toast.LENGTH_LONG)
 					.show();
 		}
-
 	}
-
 }
