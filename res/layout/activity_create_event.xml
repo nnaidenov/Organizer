@@ -10,7 +10,7 @@
         android:orientation="vertical" >
 
         <EditText
-            android:id="@+id/editText_todo_title"
+            android:id="@+id/editText_event_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -41,7 +41,7 @@
             <ToggleButton
                 android:id="@+id/toggleButton_event_whole_day"
                 android:layout_width="89dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -54,12 +54,17 @@
                 android:layout_height="wrap_content"
                 android:text="@string/textView_event_start_time" />
 
+            <TextView
+                android:id="@+id/textView_event_start_time_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
             <Button
                 android:id="@+id/button_event_start_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="showDatePickerDialog"
                 android:text="@string/button_time" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -72,20 +77,25 @@
                 android:layout_height="wrap_content"
                 android:text="@string/textView_event_end_time" />
 
+            <TextView
+                android:id="@+id/textView_event_end_time_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
             <Button
                 android:id="@+id/button_event_end_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="showDatePickerDialog"
                 android:text="@string/button_time" />
-
         </LinearLayout>
 
         <Spinner
             android:id="@+id/spinner_event_reminder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:prompt="@string/spinner_reminder_title"
-            android:entries="@array/spinner_reminders_values" />
+            android:entries="@array/spinner_reminders_values"
+            android:prompt="@string/spinner_reminder_title" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -107,4 +117,5 @@
                 android:text="@string/button_back" />
         </LinearLayout>
     </LinearLayout>
+
 </ScrollView>

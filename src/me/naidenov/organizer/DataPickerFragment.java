@@ -41,9 +41,18 @@ public class DataPickerFragment extends DialogFragment implements
 					R.id.textView_todo_selected_date);
 			selectedDate.setText(day + "-" + monthName + "-" + year);
 
-		} else {
-			Toast.makeText(view.getContext(), "Other", Toast.LENGTH_LONG)
-					.show();
+		} else if (getActivity().getClass().equals(CreateEventActivity.class)) {
+
+			Calendar calendar = Calendar.getInstance();
+			calendar.set(Calendar.MONTH, month);
+
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM");
+			simpleDateFormat.setCalendar(calendar);
+			String monthName = simpleDateFormat.format(calendar.getTime());
+
+			TextView selectedDate = (TextView) getActivity().findViewById(
+					R.id.textView_event_start_time_value);
+			selectedDate.setText(day + "-" + monthName + "-" + year);
 		}
 	}
 }

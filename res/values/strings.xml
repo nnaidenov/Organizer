@@ -31,9 +31,9 @@
   	<string name="radio_todo_pririty_E">E</string>
    	
   	<string name="textView_event_whole_day">Whole day</string>
-  	<string name="textView_event_start_time">Start time</string>
+  	<string name="textView_event_start_time">Start time: </string>
   	<string name="button_time">Pick it</string>
-  	<string name="textView_event_end_time">End time</string>
+  	<string name="textView_event_end_time">End time: </string>
    	<string name="spinner_reminder_title">When remineded</string>
   	<string-array name="spinner_reminders_values">
    	    <item >On time</item>
@@ -47,4 +47,6 @@
    	
    	<string name="button_save">Create</string>
    	<string name="button_back">Cancel</string>
+   	
+ 	<string name="button_set_date">Set</string>
 </resources>
