@@ -45,6 +45,9 @@
 	    <item >3 days before</item>
    	</string-array>
    	
+  	<string name="button_note_camera">Camera</string>
+   	<string name="button_note_photo">Photo</string>
+   	
    	<string name="button_save">Create</string>
    	<string name="button_back">Cancel</string>
    	

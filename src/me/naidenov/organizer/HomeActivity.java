@@ -26,20 +26,24 @@ import android.widget.Toast;
 public class HomeActivity extends Activity implements OnClickListener {
 
 	private ProgressDialog progress;
-	private Button createTodo; 
-	private Button createEvent; 
+	private Button createTodo;
+	private Button createEvent;
+	private Button createNote;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		
+
 		createTodo = (Button) findViewById(R.id.button_create_todo_view);
 		createTodo.setOnClickListener(this);
-		
+
 		createEvent = (Button) findViewById(R.id.button_create_event_view);
 		createEvent.setOnClickListener(this);
+
+		createNote = (Button) findViewById(R.id.button_create_note_view);
+		createNote.setOnClickListener(this);
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -51,10 +55,16 @@ public class HomeActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View view) {
 		if (view.getId() == R.id.button_create_todo_view) {
-			Intent intent = new Intent(HomeActivity.this, CreateTodoActivity.class);
+			Intent intent = new Intent(HomeActivity.this,
+					CreateTodoActivity.class);
 			startActivity(intent);
 		} else if (view.getId() == R.id.button_create_event_view) {
-			Intent intent = new Intent(HomeActivity.this, CreateEventActivity.class);
+			Intent intent = new Intent(HomeActivity.this,
+					CreateEventActivity.class);
+			startActivity(intent);
+		} else if (view.getId() == R.id.button_create_note_view) {
+			Intent intent = new Intent(HomeActivity.this,
+					CreateNoteActivity.class);
 			startActivity(intent);
 		}
 	}
@@ -85,7 +95,9 @@ public class HomeActivity extends Activity implements OnClickListener {
 
 			Toast.makeText(this, total.toString(), Toast.LENGTH_LONG).show();
 			LogoutUser logouter = new LogoutUser();
-			logouter.execute(new String[] {"http://mobileorganizer.apphb.com/api/users/logout", total.toString()});
+			logouter.execute(new String[] {
+					"http://mobileorganizer.apphb.com/api/users/logout",
+					total.toString() });
 		}
 
 		return true;
@@ -101,18 +113,19 @@ public class HomeActivity extends Activity implements OnClickListener {
 				HttpURLConnection httpCon = (HttpURLConnection) url
 						.openConnection();
 				httpCon.setRequestMethod("PUT");
-				httpCon.setRequestProperty("X-sessionKey",
-						params[1]);
+				httpCon.setRequestProperty("X-sessionKey", params[1]);
 				httpCon.connect();
 				int responseCode = httpCon.getResponseCode();
-	
+
 				Log.d("My", String.valueOf(responseCode));
-				
-				OutputStream os = openFileOutput("sessionKey", Context.MODE_PRIVATE);
+
+				OutputStream os = openFileOutput("sessionKey",
+						Context.MODE_PRIVATE);
 				os.write(new String().getBytes());
 				os.close();
-				
-				Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+
+				Intent intent = new Intent(HomeActivity.this,
+						MainActivity.class);
 				startActivity(intent);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -121,12 +134,13 @@ public class HomeActivity extends Activity implements OnClickListener {
 
 			return null;
 		}
-		
+
 		@Override
 		protected void onPostExecute(Void result) {
-//			UserDb userDb = ((OrganizerApplication)getApplication()).getUserDb();
-//			
-//			userDb.addUser(email, authCode, sessionKey);
+			// UserDb userDb =
+			// ((OrganizerApplication)getApplication()).getUserDb();
+			//
+			// userDb.addUser(email, authCode, sessionKey);
 			progress.dismiss();
 		}
 
@@ -134,9 +148,10 @@ public class HomeActivity extends Activity implements OnClickListener {
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
 			super.onPreExecute();
-			progress = ProgressDialog.show(HomeActivity.this, "Wait", "Please wait");
+			progress = ProgressDialog.show(HomeActivity.this, "Wait",
+					"Please wait");
 			progress.show();
-		}	
-		
+		}
+
 	}
 }
