@@ -35,4 +35,11 @@
         android:layout_height="wrap_content"
         android:text="@string/button_note_photo" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.10"
+        android:src="@drawable/ic_launcher" />
+
 </LinearLayout>
