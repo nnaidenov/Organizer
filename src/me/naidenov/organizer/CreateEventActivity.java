@@ -5,9 +5,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -42,8 +45,14 @@ import android.widget.ToggleButton;
 
 public class CreateEventActivity extends FragmentActivity implements
 		OnClickListener {
+	private static final long ONE_MINUTE_IN_MILLIS = 60000;
+	private static final long ONE_HOUR_IN_MILLIS = 3600000;
+	private static final long ONE_DAY_IN_MILLIS = 86400000;
+
 	private String createEventModel;
 	private ProgressDialog progress;
+	private Calendar start_date;
+	private String reminder_date;
 
 	private EditText title;
 	private EditText description;
@@ -84,7 +93,7 @@ public class CreateEventActivity extends FragmentActivity implements
 		reminder = (Spinner) findViewById(R.id.spinner_event_reminder);
 		create = (Button) findViewById(R.id.button_create_event_save);
 		create.setOnClickListener(this);
-		
+
 		cancel = (Button) findViewById(R.id.button_create_back);
 	}
 
@@ -99,8 +108,65 @@ public class CreateEventActivity extends FragmentActivity implements
 		if (v.getId() == R.id.button_create_event_save) {
 			String str_title = title.getText().toString();
 			String str_description = description.getText().toString();
-			String str_start_date = text_view_start_time_value.getText().toString();
+			String str_start_date = text_view_start_time_value.getText()
+					.toString();
 			String str_end_date = text_view_end_time_value.getText().toString();
+
+			String selectedReminderItem = reminder.getSelectedItem().toString();
+			
+		    if (selectedReminderItem.equals("On time")) {
+				reminder_date = str_start_date;
+				Toast.makeText(this, "On time" + reminder_date,
+						Toast.LENGTH_SHORT).show();
+			} 
+			else if (selectedReminderItem.equals("5 minutes before"))
+			{
+			   Date dd = start_date.getTime();
+			   long t=dd.getTime();
+			   Date afterAddingTenMins=new Date(t - (5 * ONE_MINUTE_IN_MILLIS));
+				DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");     
+				reminder_date = df.format(afterAddingTenMins);
+			} 
+			else if (selectedReminderItem.equals("10 minutes before")) 
+			{
+				 Date dd = start_date.getTime();
+				   long t=dd.getTime();
+				   Date afterAddingTenMins=new Date(t - (10 * ONE_MINUTE_IN_MILLIS));
+					DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");     
+					reminder_date = df.format(afterAddingTenMins);
+			} 
+			else if (selectedReminderItem.equals("30 minutes before")) 
+			{
+				 Date dd = start_date.getTime();
+				   long t=dd.getTime();
+				   Date afterAddingTenMins=new Date(t - (30 * ONE_MINUTE_IN_MILLIS));
+					DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");     
+					reminder_date = df.format(afterAddingTenMins);
+			} 
+			else if (selectedReminderItem.equals("1 hour before"))
+			{
+				 Date dd = start_date.getTime();
+				   long t=dd.getTime();
+				   Date afterAddingTenMins=new Date(t - (ONE_HOUR_IN_MILLIS));
+					DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");     
+					reminder_date = df.format(afterAddingTenMins);
+			} 
+			else if (selectedReminderItem.equals("1 day before"))
+			{
+				 Date dd = start_date.getTime();
+				   long t=dd.getTime();
+				   Date afterAddingTenMins=new Date(t - (ONE_DAY_IN_MILLIS));
+					DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");     
+					reminder_date = df.format(afterAddingTenMins);
+			} 
+			else if (selectedReminderItem.equals("3 days before"))
+			{
+				 Date dd = start_date.getTime();
+				   long t=dd.getTime();
+				   Date afterAddingTenMins=new Date(t - (3 * ONE_DAY_IN_MILLIS));
+					DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");     
+					reminder_date = df.format(afterAddingTenMins);
+			}
 
 			JSONObject object = new JSONObject();
 			try {
@@ -108,7 +174,7 @@ public class CreateEventActivity extends FragmentActivity implements
 				object.put("EndDate", str_end_date);
 				object.put("Description", str_description);
 				object.put("Title", str_title);
-				object.put("Reminder", str_end_date);
+				object.put("Reminder", reminder_date);
 			} catch (Exception ex) {
 			}
 
@@ -135,19 +201,19 @@ public class CreateEventActivity extends FragmentActivity implements
 			dialog.setContentView(R.layout.sdfsa);
 			dialog.setTitle("Save New Number");
 			dialog.setCancelable(true);
+			TimePicker tp = (TimePicker) dialog.findViewById(R.id.timePicker1);
+			tp.setIs24HourView(true);
 			dialog.show();
-
+			
 			Button saveButton = (Button) dialog
 					.findViewById(R.id.button_set_date);
 			saveButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					String hours = ((TimePicker) dialog
-							.findViewById(R.id.timePicker1)).getCurrentHour()
-							.toString();
-					String minutes = ((TimePicker) dialog
-							.findViewById(R.id.timePicker1)).getCurrentMinute()
-							.toString();
+					int hours = ((TimePicker) dialog
+							.findViewById(R.id.timePicker1)).getCurrentHour();
+					int minutes = ((TimePicker) dialog
+							.findViewById(R.id.timePicker1)).getCurrentMinute();
 
 					int day = ((DatePicker) dialog
 							.findViewById(R.id.datePicker1)).getDayOfMonth();
@@ -160,6 +226,11 @@ public class CreateEventActivity extends FragmentActivity implements
 					calendar.set(Calendar.MONTH, month);
 					calendar.set(Calendar.DAY_OF_MONTH, day);
 					calendar.set(Calendar.YEAR, year);
+					calendar.set(Calendar.MINUTE, minutes);
+					calendar.set(Calendar.HOUR_OF_DAY, hours);
+					
+					
+					start_date = calendar;
 
 					SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
 							"MMM");
@@ -179,6 +250,8 @@ public class CreateEventActivity extends FragmentActivity implements
 			final Dialog dialog = new Dialog(this);
 			dialog.setContentView(R.layout.sdfsa);
 			dialog.setTitle("Save New Number");
+			TimePicker tp = (TimePicker) dialog.findViewById(R.id.timePicker1);
+			tp.setIs24HourView(true);
 			dialog.setCancelable(true);
 			dialog.show();
 
@@ -218,7 +291,7 @@ public class CreateEventActivity extends FragmentActivity implements
 			});
 		}
 	}
-	
+
 	private class CreateEvent extends AsyncTask<String, Void, Void> {
 
 		@Override
