@@ -2,9 +2,11 @@ package me.naidenov.organizer;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.xml.sax.InputSource;
 
@@ -15,6 +17,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -119,9 +122,12 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else {
-				Toast.makeText(CreateNoteActivity.this,
-						"Your Path:", 2000).show();
+			} else if(requestCode == LOAD_IMAGES_CODE){
+				String iconsStoragePath = Environment
+						.getExternalStorageDirectory() + "/myAppDir/myImages/";
+				String name = "dsdsa1";
+
+				File file2 = new File(iconsStoragePath, name);
 				
 				Uri selectedImage = data.getData();
 				String[] filePathColumn = { MediaStore.Images.Media.DATA };
@@ -133,15 +139,33 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 				int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
 				// file path of captured image
 				filePath = cursor.getString(columnIndex);
-				// file path of captured image
-				File f = new File(filePath);
-				filename = f.getName();
-
-				Toast.makeText(CreateNoteActivity.this,
-						"Your Path:" + filePath, 2000).show();
-				Toast.makeText(CreateNoteActivity.this,
-						"Your Filename:" + filename, 2000).show();
 				cursor.close();
+				
+				Bitmap bitmap = BitmapFactory.decodeFile(filePath);
+				ByteArrayOutputStream bos = new ByteArrayOutputStream();
+				bitmap.compress(CompressFormat.PNG, 0 /* ignored for PNG */, bos);
+				byte[] bitmapdata = bos.toByteArray();
+
+				// write the bytes in file
+				FileOutputStream fos = null;
+				try {
+					fos = new FileOutputStream(file2);
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					fos.write(bitmapdata);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					fos.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	}
