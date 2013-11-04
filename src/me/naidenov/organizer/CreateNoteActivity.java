@@ -122,50 +122,51 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else if(requestCode == LOAD_IMAGES_CODE){
-				String iconsStoragePath = Environment
-						.getExternalStorageDirectory() + "/myAppDir/myImages/";
-				String name = "dsdsa1";
 
-				File file2 = new File(iconsStoragePath, name);
-				
-				Uri selectedImage = data.getData();
-				String[] filePathColumn = { MediaStore.Images.Media.DATA };
+			}
+		} else if (requestCode == LOAD_IMAGES_CODE) {
+			String iconsStoragePath = Environment.getExternalStorageDirectory()
+					+ "/myAppDir/myImages/";
+			String name = "dsdsa1";
 
-				Cursor cursor = getContentResolver().query(selectedImage,
-						filePathColumn, null, null, null);
-				cursor.moveToFirst();
+			File file2 = new File(iconsStoragePath, name);
 
-				int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-				// file path of captured image
-				filePath = cursor.getString(columnIndex);
-				cursor.close();
-				
-				Bitmap bitmap = BitmapFactory.decodeFile(filePath);
-				ByteArrayOutputStream bos = new ByteArrayOutputStream();
-				bitmap.compress(CompressFormat.PNG, 0 /* ignored for PNG */, bos);
-				byte[] bitmapdata = bos.toByteArray();
+			Uri selectedImage = data.getData();
+			String[] filePathColumn = { MediaStore.Images.Media.DATA };
 
-				// write the bytes in file
-				FileOutputStream fos = null;
-				try {
-					fos = new FileOutputStream(file2);
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try {
-					fos.write(bitmapdata);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try {
-					fos.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			Cursor cursor = getContentResolver().query(selectedImage,
+					filePathColumn, null, null, null);
+			cursor.moveToFirst();
+
+			int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+			// file path of captured image
+			filePath = cursor.getString(columnIndex);
+			cursor.close();
+
+			Bitmap bitmap = BitmapFactory.decodeFile(filePath);
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			bitmap.compress(CompressFormat.PNG, 0 /* ignored for PNG */, bos);
+			byte[] bitmapdata = bos.toByteArray();
+
+			// write the bytes in file
+			FileOutputStream fos = null;
+			try {
+				fos = new FileOutputStream(file2);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				fos.write(bitmapdata);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				fos.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}
