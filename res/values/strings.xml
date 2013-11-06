@@ -46,6 +46,8 @@
    	</string-array>
    	
   	<string name="button_note_camera">Camera</string>
+  	<string name="image">Image</string>
+  	<string name="button_note_video">Video</string>
    	<string name="button_note_photo">Photo</string>
    	
    	<string name="button_save">Create</string>
