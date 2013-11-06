@@ -6,7 +6,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+<<<<<<< HEAD
          android:layout_height="wrap_content"
+=======
+>>>>>>> 5cf001cf4d9f4bbdf5190de62bf256933d552760
         android:orientation="vertical" >
 
         <EditText

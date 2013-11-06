@@ -9,8 +9,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.Map;
+=======
+>>>>>>> 5cf001cf4d9f4bbdf5190de62bf256933d552760
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -191,11 +194,14 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 					+ "/myAppDir/myImages/";
 
 			File file2 = new File(iconsStoragePath, filename);
+<<<<<<< HEAD
 			
 			InputStream is = new ByteArrayInputStream(bitmapdata);
 			
 			uploadPicture aa = new uploadPicture();
 			aa.execute(is);
+=======
+>>>>>>> 5cf001cf4d9f4bbdf5190de62bf256933d552760
 
 			// write the bytes in file
 			FileOutputStream fos = null;
@@ -220,6 +226,7 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 		} else if (requestCode == VIDEO_CODE)
 
 			Toast.makeText(this, "Record", Toast.LENGTH_LONG).show();
+<<<<<<< HEAD
 	}
 	
 private class uploadPicture extends AsyncTask<InputStream, Void, Void>{
@@ -252,5 +259,7 @@ private class uploadPicture extends AsyncTask<InputStream, Void, Void>{
 	}
 		
 		
+=======
+>>>>>>> 5cf001cf4d9f4bbdf5190de62bf256933d552760
 	}
 }
