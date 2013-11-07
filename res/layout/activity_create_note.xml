@@ -52,6 +52,19 @@
             android:contentDescription="@string/image"
             android:layout_height="0dp"
             android:src="@drawable/ic_launcher" />
+
+        <Button
+            android:id="@+id/button_note_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_save" />
+
+        <Button
+            android:id="@+id/button_note_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_back" />
+
     </LinearLayout>
 
 </ScrollView>
