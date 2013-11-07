@@ -26,6 +26,7 @@ import android.widget.Toast;
 public class HomeActivity extends Activity implements OnClickListener {
 
 	private ProgressDialog progress;
+	private Button calendar;
 	private Button createTodo;
 	private Button createEvent;
 	private Button createNote;
@@ -36,6 +37,9 @@ public class HomeActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 
+		calendar = (Button) findViewById(R.id.button_calendar_view);
+		calendar.setOnClickListener(this);
+		
 		createTodo = (Button) findViewById(R.id.button_create_todo_view);
 		createTodo.setOnClickListener(this);
 
@@ -65,6 +69,10 @@ public class HomeActivity extends Activity implements OnClickListener {
 		} else if (view.getId() == R.id.button_create_note_view) {
 			Intent intent = new Intent(HomeActivity.this,
 					CreateNoteActivity.class);
+			startActivity(intent);
+		} else if (view.getId() == R.id.button_calendar_view) {
+			Intent intent = new Intent(HomeActivity.this,
+					CalendarMonthViewActivity.class);
 			startActivity(intent);
 		}
 	}

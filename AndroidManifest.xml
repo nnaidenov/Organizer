@@ -51,6 +51,10 @@
         <meta-data
             android:name="CLOUDINARY_URL"
             android:value="cloudinary://781383948985498:Vh5BQmeTxvSKvTGTg-wRDYKqPz4@djlwcsyiz" />
+        <activity android:name="WeekViewActivity"></activity>
+        <activity android:name="CalendarMonthViewActivity"></activity>
+        <activity android:name="DayViewActivity"></activity>
+        <activity android:name="MonthViewActivity"></activity>
     </application>
 
 </manifest>
