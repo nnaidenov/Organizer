@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,12 @@ public class StuffesAdapter extends ArrayAdapter<Stuffe> {
 		View row = inflater.inflate(resource, parent, false);
 		TextView tv = (TextView) row.findViewById(R.id.textView_title_row);
 		tv.setText(data.get(position).getTitle());
+		
+		if(data.get(position).getType().equals("todo")) {
+			row.setBackgroundColor(Color.BLUE); 
+		} else {
+			row.setBackgroundColor(Color.RED); 
+		}
 		
 		return row;
 	}

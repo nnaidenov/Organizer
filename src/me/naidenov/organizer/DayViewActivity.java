@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -20,27 +21,39 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class DayViewActivity extends Activity {
 
-	List<Stuffe> mySuffes = new ArrayList<Stuffe>();
+	private List<Stuffe> mySuffes = new ArrayList<Stuffe>();
 
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_day_view);
 
-		GetStuffes gs = new GetStuffes();
-		gs.execute("http://mobileorganizer.apphb.com/api/Stuffes/byDate/22/11/2013");
+		Calendar cal = Calendar.getInstance();
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		int month = cal.get(Calendar.MONTH) + 1;
+		int year = cal.get(Calendar.YEAR);
 
+		GetStuffes gs = new GetStuffes();
+		gs.execute("http://mobileorganizer.apphb.com/api/Stuffes/byDate/" + day
+				+ "/" + month + "/" + year + "");
 	}
 
 	private class GetStuffes extends AsyncTask<String, Void, String> {
@@ -123,9 +136,32 @@ public class DayViewActivity extends Activity {
 			Toast.makeText(DayViewActivity.this, result, Toast.LENGTH_LONG)
 					.show();
 
-			ListView lv = (ListView) findViewById(R.id.asdf);
-			StuffesAdapter adapter = new StuffesAdapter(DayViewActivity.this, R.layout.day_list_row_stuffe, mySuffes);
+			final ListView lv = (ListView) findViewById(R.id.asdf);
+			StuffesAdapter adapter = new StuffesAdapter(DayViewActivity.this,
+					R.layout.day_list_row_stuffe, mySuffes);
 			lv.setAdapter(adapter);
+
+			lv.setOnItemClickListener(new OnItemClickListener() {
+				public void onItemClick(AdapterView<?> arg0, View v,
+						int position, long id) {
+					Stuffe st = mySuffes.get(position);
+					
+					if (st.getType().equals("todo")) {
+						Intent intent = new Intent(DayViewActivity.this,
+								SingleTodoActivity.class);
+						
+						intent.putExtra("todoId", st.getId());
+						startActivity(intent);
+					} else if(st.getType().equals("event")) {
+						Intent intent = new Intent(DayViewActivity.this,
+								SingleEventActivity.class);
+						
+						intent.putExtra("eventId", st.getId());
+						startActivity(intent);
+					}
+					
+				}
+			});
 		}
 
 		@Override
