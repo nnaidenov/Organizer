@@ -28,8 +28,8 @@ public final class R {
         public static final int logout=0x7f020001;
     }
     public static final class id {
-        public static final int action_logout=0x7f09003a;
-        public static final int action_settings=0x7f09003b;
+        public static final int action_logout=0x7f090046;
+        public static final int action_settings=0x7f090047;
         public static final int asdf=0x7f090023;
         public static final int button_calendar_view=0x7f090024;
         public static final int button_create_back=0x7f09000d;
@@ -50,9 +50,9 @@ public final class R {
         public static final int button_note_video=0x7f090011;
         public static final int button_register=0x7f090030;
         public static final int button_register_view=0x7f09002c;
-        public static final int button_set_date=0x7f090039;
+        public static final int button_set_date=0x7f090045;
         public static final int button_todo_pick_date=0x7f090019;
-        public static final int datePicker1=0x7f090038;
+        public static final int datePicker1=0x7f090044;
         public static final int editText_email_login=0x7f090028;
         public static final int editText_email_register=0x7f09002d;
         public static final int editText_event_description=0x7f090002;
@@ -65,6 +65,7 @@ public final class R {
         public static final int editText_todo_description=0x7f090017;
         public static final int editText_todo_title=0x7f090016;
         public static final int imageView=0x7f090013;
+        public static final int ponedelnik=0x7f090036;
         public static final int radioGroup_todo_priority=0x7f09001b;
         public static final int radio_todo_priority_B=0x7f09001d;
         public static final int radio_todo_priority_C=0x7f09001e;
@@ -73,21 +74,32 @@ public final class R {
         public static final int radio_todo_pririty_A=0x7f09001c;
         public static final int scrollView1=0x7f090000;
         public static final int spinner_event_reminder=0x7f09000b;
-        public static final int textView1=0x7f090035;
+        public static final int tableRow1=0x7f090035;
+        public static final int tableRow2=0x7f09003a;
+        public static final int tableRow3=0x7f09003d;
+        public static final int tableRow4=0x7f090040;
         public static final int textView_create_todo_priority=0x7f09001a;
         public static final int textView_event_end_time=0x7f090008;
         public static final int textView_event_end_time_value=0x7f090009;
         public static final int textView_event_start_time=0x7f090005;
         public static final int textView_event_start_time_value=0x7f090006;
         public static final int textView_event_whole_day=0x7f090003;
+        public static final int textView_fifthDay=0x7f09003e;
+        public static final int textView_firstDay=0x7f090037;
+        public static final int textView_fourthDay=0x7f09003c;
         public static final int textView_id=0x7f090031;
-        public static final int textView_title_row=0x7f090036;
+        public static final int textView_secondDay=0x7f090039;
+        public static final int textView_seventhDay=0x7f090041;
+        public static final int textView_sixthhDay=0x7f09003f;
+        public static final int textView_thirdDay=0x7f09003b;
+        public static final int textView_title_row=0x7f090042;
         public static final int textView_todo_description=0x7f090033;
         public static final int textView_todo_selected_date=0x7f090018;
         public static final int textView_todo_title=0x7f090032;
-        public static final int timePicker1=0x7f090037;
+        public static final int timePicker1=0x7f090043;
         public static final int toggleButton_event_whole_day=0x7f090004;
         public static final int toggleButton_todo_is_done=0x7f090034;
+        public static final int vtornik=0x7f090038;
     }
     public static final class layout {
         public static final int activity_create_event=0x7f030000;
@@ -101,7 +113,7 @@ public final class R {
         public static final int activity_register=0x7f030008;
         public static final int activity_single_event=0x7f030009;
         public static final int activity_single_todo=0x7f03000a;
-        public static final int activity_week_view=0x7f03000b;
+        public static final int activity_week=0x7f03000b;
         public static final int day_list_row_stuffe=0x7f03000c;
         public static final int sdfsa=0x7f03000d;
         public static final int tab_activity_layout=0x7f03000e;
