@@ -46,10 +46,18 @@ public class DayViewActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_day_view);
 
+		int[] date = getIntent().getIntArrayExtra("selectedDate");
+		
 		Calendar cal = Calendar.getInstance();
 		int day = cal.get(Calendar.DAY_OF_MONTH);
 		int month = cal.get(Calendar.MONTH) + 1;
 		int year = cal.get(Calendar.YEAR);
+		
+		if (date != null) {
+			day = date[1];
+			month = date[0] + 1;
+			year = date[2];
+		}
 
 		GetStuffes gs = new GetStuffes();
 		gs.execute("http://mobileorganizer.apphb.com/api/Stuffes/byDate/" + day
@@ -145,21 +153,21 @@ public class DayViewActivity extends Activity {
 				public void onItemClick(AdapterView<?> arg0, View v,
 						int position, long id) {
 					Stuffe st = mySuffes.get(position);
-					
+
 					if (st.getType().equals("todo")) {
 						Intent intent = new Intent(DayViewActivity.this,
 								SingleTodoActivity.class);
-						
+
 						intent.putExtra("todoId", st.getId());
 						startActivity(intent);
-					} else if(st.getType().equals("event")) {
+					} else if (st.getType().equals("event")) {
 						Intent intent = new Intent(DayViewActivity.this,
 								SingleEventActivity.class);
-						
+
 						intent.putExtra("eventId", st.getId());
 						startActivity(intent);
 					}
-					
+
 				}
 			});
 		}
