@@ -55,6 +55,19 @@ public class WeekViewActivity extends Activity {
 
 	private Intent intentFirstDay;
 	private Intent intentSecondDay;
+	private Intent intentThirdDay;
+	private Intent intentFourdDay;
+	private Intent intentFivedDay;
+	private Intent intentSixedDay;
+	private Intent intentSevendDay;
+
+	private int[] firstDate;
+	private int[] secondDate;
+	private int[] thirdDate;
+	private int[] fourdDate;
+	private int[] fivedDate;
+	private int[] sixedDate;
+	private int[] sevendDate;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -68,35 +81,137 @@ public class WeekViewActivity extends Activity {
 		textView_fifthDay = (TextView) findViewById(R.id.textView_fifthDay);
 		textView_sixthhDay = (TextView) findViewById(R.id.textView_sixthhDay);
 		textView_seventhDay = (TextView) findViewById(R.id.textView_seventhDay);
-		
+
 		intentFirstDay = new Intent(WeekViewActivity.this,
 				DayViewActivity.class);
 		intentSecondDay = new Intent(WeekViewActivity.this,
 				DayViewActivity.class);
-		
+		intentThirdDay = new Intent(WeekViewActivity.this,
+				DayViewActivity.class);
+		intentFourdDay = new Intent(WeekViewActivity.this,
+				DayViewActivity.class);
+		intentFivedDay = new Intent(WeekViewActivity.this,
+				DayViewActivity.class);
+		intentSixedDay = new Intent(WeekViewActivity.this,
+				DayViewActivity.class);
+		intentSevendDay = new Intent(WeekViewActivity.this,
+				DayViewActivity.class);
+
 		LinearLayout ty = (LinearLayout) findViewById(R.id.ponedelnik);
 		ty.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Toast.makeText(WeekViewActivity.this, "Понеделник",
-						Toast.LENGTH_LONG).show();
-			
-				startActivity(intentFirstDay);
+				if (!textView_firstDay.getText().equals("Понеделник")) {
+					startActivity(intentFirstDay);
+				} else {
+					Toast.makeText(WeekViewActivity.this,
+							"No stuffs for this Day!", Toast.LENGTH_LONG)
+							.show();
+				}
+
 			}
 		});
-		
+
 		LinearLayout ty2 = (LinearLayout) findViewById(R.id.vtornik);
 		ty2.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Toast.makeText(WeekViewActivity.this, "Вторник",
-						Toast.LENGTH_LONG).show();
-			
-				startActivity(intentSecondDay);
+				if (!textView_secondDay.getText().equals("Вторник")) {
+					startActivity(intentSecondDay);
+				} else {
+					Toast.makeText(WeekViewActivity.this,
+							"No stuffs for this Day!", Toast.LENGTH_LONG)
+							.show();
+				}
+
+			}
+		});
+
+		LinearLayout ty3 = (LinearLayout) findViewById(R.id.srqda);
+		ty3.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (!textView_thirdDay.getText().equals("Сряда")) {
+					startActivity(intentThirdDay);
+				} else {
+					Toast.makeText(WeekViewActivity.this,
+							"No stuffs for this Day!", Toast.LENGTH_LONG)
+							.show();
+				}
+
+			}
+		});
+
+		LinearLayout ty4 = (LinearLayout) findViewById(R.id.chetvurtuk);
+		ty4.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (!textView_fourthDay.getText().equals("Четвъртък")) {
+					startActivity(intentFourdDay);
+				} else {
+					Toast.makeText(WeekViewActivity.this,
+							"No stuffs for this Day!", Toast.LENGTH_LONG)
+							.show();
+				}
+
+			}
+		});
+
+		LinearLayout ty5 = (LinearLayout) findViewById(R.id.petuk);
+		ty5.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (!textView_fifthDay.getText().equals("Петък")) {
+					startActivity(intentFivedDay);
+				} else {
+					Toast.makeText(WeekViewActivity.this,
+							"No stuffs for this Day!", Toast.LENGTH_LONG)
+							.show();
+				}
+
+			}
+		});
+
+		LinearLayout ty6 = (LinearLayout) findViewById(R.id.subota);
+		ty6.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+
+				if (!textView_sixthhDay.getText().equals("Събота")) {
+					startActivity(intentSixedDay);
+				} else {
+					Toast.makeText(WeekViewActivity.this,
+							"No stuffs for this Day!", Toast.LENGTH_LONG)
+							.show();
+				}
+			}
+		});
+
+		LinearLayout ty7 = (LinearLayout) findViewById(R.id.nedelq);
+		ty7.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (!textView_seventhDay.getText().equals("Неделя")) {
+					startActivity(intentSevendDay);
+				} else {
+					Toast.makeText(WeekViewActivity.this,
+							"No stuffs for this Day!", Toast.LENGTH_LONG)
+							.show();
+				}
 			}
 		});
 
@@ -187,42 +302,56 @@ public class WeekViewActivity extends Activity {
 					Calendar c = Calendar.getInstance();
 					c.setTime(startDate);
 					int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
-					int[] selectedDate = new int[] {
-							startDate.getMonth(), startDate.getDate(), startDate.getYear()+1900};
-					
+					int[] selectedDate = new int[] { startDate.getMonth(),
+							startDate.getDate(), startDate.getYear() + 1900 };
+
 					if (dayOfWeek == 1) {
 						String old = textView_firstDay.getText().toString();
 						String newT = old + "\n" + title;
 						textView_firstDay.setText(newT);
-						intentFirstDay.putExtra("selectedDate", selectedDate);
+						firstDate = selectedDate;
+
 					} else if (dayOfWeek == 2) {
 						String old = textView_secondDay.getText().toString();
 						String newT = old + "\n" + title;
 						textView_secondDay.setText(newT);
-						
-						intentSecondDay.putExtra("selectedDate", selectedDate);
+						secondDate = selectedDate;
 					} else if (dayOfWeek == 3) {
 						String old = textView_thirdDay.getText().toString();
 						String newT = old + "\n" + title;
 						textView_thirdDay.setText(newT);
+						thirdDate = selectedDate;
 					} else if (dayOfWeek == 4) {
 						String old = textView_fourthDay.getText().toString();
 						String newT = old + "\n" + title;
 						textView_fourthDay.setText(newT);
+						fourdDate = selectedDate;
 					} else if (dayOfWeek == 5) {
 						String old = textView_fifthDay.getText().toString();
 						String newT = old + "\n" + title;
 						textView_fifthDay.setText(newT);
+						fivedDate = selectedDate;
 					} else if (dayOfWeek == 6) {
 						String old = textView_sixthhDay.getText().toString();
 						String newT = old + "\n" + title;
 						textView_sixthhDay.setText(newT);
+						sixedDate = selectedDate;
 					} else if (dayOfWeek == 7) {
 						String old = textView_seventhDay.getText().toString();
 						String newT = old + "\n" + title;
 						textView_seventhDay.setText(newT);
+						sevendDate = selectedDate;
 					}
 				}
+
+				intentFirstDay.putExtra("selectedDate", firstDate);
+				intentSecondDay.putExtra("selectedDate", secondDate);
+				intentThirdDay.putExtra("selectedDate", thirdDate);
+				intentFourdDay.putExtra("selectedDate", fourdDate);
+				intentFivedDay.putExtra("selectedDate", fivedDate);
+				intentSixedDay.putExtra("selectedDate", sixedDate);
+				intentSevendDay.putExtra("selectedDate", sevendDate);
+
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

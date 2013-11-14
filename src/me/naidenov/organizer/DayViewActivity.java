@@ -45,6 +45,10 @@ public class DayViewActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_day_view);
+		
+		View empty = findViewById(R.id.empty);
+	    ListView list = (ListView) findViewById(R.id.asdf);
+	    list.setEmptyView(empty);
 
 		int[] date = getIntent().getIntArrayExtra("selectedDate");
 		

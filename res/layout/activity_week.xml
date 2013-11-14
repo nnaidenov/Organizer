@@ -53,19 +53,35 @@
         android:layout_weight="1"
         android:background="@android:color/white" >
 
-        <TextView
-            android:id="@+id/textView_thirdDay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/srqda"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            android:text="Сряда" />
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/textView_fourthDay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/textView_thirdDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Сряда" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/chetvurtuk"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            android:text="Четвъртък" />
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView_fourthDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Четвъртък" />
+        </LinearLayout>
     </TableRow>
 
     <TableRow
@@ -76,19 +92,35 @@
         android:layout_weight="1"
         android:background="@android:color/white" >
 
-        <TextView
-            android:id="@+id/textView_fifthDay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/petuk"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            android:text="Петък" />
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/textView_sixthhDay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/textView_fifthDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Петък" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/subota"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            android:text="Събота" />
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView_sixthhDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Събота" />
+        </LinearLayout>
     </TableRow>
 
     <TableRow
@@ -99,12 +131,20 @@
         android:layout_weight="1"
         android:background="@android:color/white" >
 
-        <TextView
-            android:id="@+id/textView_seventhDay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/nedelq"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            android:text="Неделя" />
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView_seventhDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Неделя" />
+        </LinearLayout>
     </TableRow>
 
 </TableLayout>
