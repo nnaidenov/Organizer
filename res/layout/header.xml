@@ -4,10 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="horizontal" >
 
-  <ListView
-        android:id="@android:id/list"
+    <TextView
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:id="@+id/separator"
+        android:text="Header"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
-
+        android:layout_height="wrap_content"
+        android:background="#757678"
+        android:textColor="#f5c227" />
 
 </LinearLayout>

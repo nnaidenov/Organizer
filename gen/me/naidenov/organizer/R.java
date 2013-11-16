@@ -28,8 +28,8 @@ public final class R {
         public static final int logout=0x7f020001;
     }
     public static final class id {
-        public static final int action_logout=0x7f09004c;
-        public static final int action_settings=0x7f09004d;
+        public static final int action_logout=0x7f09004f;
+        public static final int action_settings=0x7f090050;
         public static final int asdf=0x7f090023;
         public static final int button_calendar_view=0x7f090025;
         public static final int button_create_back=0x7f09000d;
@@ -50,10 +50,10 @@ public final class R {
         public static final int button_note_video=0x7f090011;
         public static final int button_register=0x7f090031;
         public static final int button_register_view=0x7f09002d;
-        public static final int button_set_date=0x7f09004b;
+        public static final int button_set_date=0x7f09004e;
         public static final int button_todo_pick_date=0x7f090019;
         public static final int chetvurtuk=0x7f09003e;
-        public static final int datePicker1=0x7f09004a;
+        public static final int datePicker1=0x7f09004d;
         public static final int editText_email_login=0x7f090029;
         public static final int editText_email_register=0x7f09002e;
         public static final int editText_event_description=0x7f090002;
@@ -67,6 +67,8 @@ public final class R {
         public static final int editText_todo_title=0x7f090016;
         public static final int empty=0x7f090024;
         public static final int imageView=0x7f090013;
+        public static final int list_content1=0x7f09004a;
+        public static final int list_content2=0x7f09004b;
         public static final int nedelq=0x7f090046;
         public static final int petuk=0x7f090041;
         public static final int ponedelnik=0x7f090037;
@@ -77,6 +79,7 @@ public final class R {
         public static final int radio_todo_priority_E=0x7f090020;
         public static final int radio_todo_pririty_A=0x7f09001c;
         public static final int scrollView1=0x7f090000;
+        public static final int separator=0x7f090049;
         public static final int spinner_event_reminder=0x7f09000b;
         public static final int srqda=0x7f09003c;
         public static final int subota=0x7f090043;
@@ -102,7 +105,7 @@ public final class R {
         public static final int textView_todo_description=0x7f090034;
         public static final int textView_todo_selected_date=0x7f090018;
         public static final int textView_todo_title=0x7f090033;
-        public static final int timePicker1=0x7f090049;
+        public static final int timePicker1=0x7f09004c;
         public static final int toggleButton_event_whole_day=0x7f090004;
         public static final int toggleButton_todo_is_done=0x7f090035;
         public static final int vtornik=0x7f090039;
@@ -121,8 +124,10 @@ public final class R {
         public static final int activity_single_todo=0x7f03000a;
         public static final int activity_week=0x7f03000b;
         public static final int day_list_row_stuffe=0x7f03000c;
-        public static final int sdfsa=0x7f03000d;
-        public static final int tab_activity_layout=0x7f03000e;
+        public static final int header=0x7f03000d;
+        public static final int my_list_item=0x7f03000e;
+        public static final int sdfsa=0x7f03000f;
+        public static final int tab_activity_layout=0x7f030010;
     }
     public static final class menu {
         public static final int loged_in=0x7f080000;
