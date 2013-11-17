@@ -56,6 +56,9 @@
         <activity android:name="DayViewActivity"></activity>
         <activity android:name="MonthViewActivity"></activity>
         <activity android:name="SingleTodoActivity"></activity>
+        <activity android:name="SingleEventActivity"></activity>
+        <activity android:name="SingleNoteActivity"></activity>
+        <activity android:name="NotesActivity"></activity>
     </application>
 
 </manifest>

@@ -299,7 +299,7 @@ public class WeekViewActivity extends Activity {
 
 					mySuffes.add(cStuffe);
 
-					Calendar c = Calendar.getInstance();
+					Calendar c = Calendar.getInstance(); 
 					c.setTime(startDate);
 					int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
 					int[] selectedDate = new int[] { startDate.getMonth(),

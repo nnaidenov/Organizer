@@ -1,6 +1,5 @@
 package me.naidenov.organizer;
 
-
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -50,6 +49,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.Toast;
 
 public class CreateNoteActivity extends Activity implements OnClickListener {
@@ -65,14 +65,14 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 	private EditText editorText_description;
 
 	private Button camera_button;
-	private Button video_button;
 	private Button photo_button;
 	private ImageView image_imageView;
+	private ImageView photoView;
 	private String mCapturedImageURI;
 
 	private Button save_button;
 	private String newNoteModel;
-	
+
 	private int readyToSend = 0;
 
 	protected void onCreate(Bundle savedInstanceState) {
@@ -85,20 +85,19 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 
 		editorText_title = (EditText) findViewById(R.id.editText_note_title);
 		editorText_description = (EditText) findViewById(R.id.editText_note_description);
+		image_imageView = (ImageView) findViewById(R.id.imageView);
+		photoView = (ImageView) findViewById(R.id.photoView);
 
 		camera_button = (Button) findViewById(R.id.button_note_camera);
-		video_button = (Button) findViewById(R.id.button_note_video);
 
 		photo_button = (Button) findViewById(R.id.button_note_photo);
 		photo_button.setOnClickListener(this);
+		
 		if (hasCamera) {
 			camera_button.setOnClickListener(this);
-			video_button.setOnClickListener(this);
 		} else {
 			camera_button.setVisibility(View.GONE);
 		}
-
-		image_imageView = (ImageView) findViewById(R.id.imageView);
 
 		save_button = (Button) findViewById(R.id.button_note_save);
 		save_button.setOnClickListener(this);
@@ -122,13 +121,7 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 					Intent.ACTION_PICK,
 					android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 			startActivityForResult(intent, LOAD_IMAGES_CODE);
-		} else if (v.getId() == R.id.button_note_video) {
-			Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-			startActivityForResult(takeVideoIntent, VIDEO_CODE);
 		} else if (v.getId() == R.id.button_note_save) {
-
-			
-
 			if (image != null) {
 				InputStream is = new ByteArrayInputStream(photo);
 
@@ -142,7 +135,7 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 				uploadPicture aa = new uploadPicture();
 				aa.execute(is);
 			}
-			
+
 			if (readyToSend == 0) {
 				String title = String.valueOf(editorText_title.getText());
 				String description = String.valueOf(editorText_description
@@ -160,7 +153,7 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 				}
 
 				newNoteModel = object.toString();
-				
+
 				CreateNote noter = new CreateNote();
 				noter.execute(new String[] {
 						"http://mobileorganizer.apphb.com/api/notes/create",
@@ -257,7 +250,7 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
 			bitmap.compress(CompressFormat.PNG, 0 /* ignored for PNG */, bos);
 			image = bos.toByteArray();
-
+			photoView.setImageBitmap(bitmap);
 			String iconsStoragePath = Environment.getExternalStorageDirectory()
 					+ "/myAppDir/myImages/";
 
@@ -283,7 +276,7 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			readyToSend++;
 		} else if (requestCode == VIDEO_CODE)
 
@@ -321,7 +314,7 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 			}
 			return loudScreaming;
 		}
-		
+
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
 			super.onPreExecute();
@@ -333,10 +326,11 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 		@Override
 		protected void onPostExecute(String result) {
 			progress.dismiss();
-			Toast.makeText(CreateNoteActivity.this, result, Toast.LENGTH_LONG).show();
+			Toast.makeText(CreateNoteActivity.this, result, Toast.LENGTH_LONG)
+					.show();
 			resourseUrls.add(result);
 			readyToSend--;
-			
+
 			if (readyToSend == 0) {
 				String title = String.valueOf(editorText_title.getText());
 				String description = String.valueOf(editorText_description
@@ -355,7 +349,7 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 				}
 
 				newNoteModel = object.toString();
-				
+
 				CreateNote noter = new CreateNote();
 				noter.execute(new String[] {
 						"http://mobileorganizer.apphb.com/api/notes/create",

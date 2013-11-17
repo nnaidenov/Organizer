@@ -6,61 +6,69 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.R.bool;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SingleEventActivity extends Activity {
-	private TextView id;
-	private TextView tewxtView_title;
-	private TextView tewxtView_description;
+public class SingleNoteActivity extends Activity {
+
+	private List<Bitmap> images = new ArrayList<Bitmap>();
+	private ImageView imageView_one;
+	private ImageView imageView_two;
+	private TextView note_id;
+	private TextView note_title;
+	private TextView note_description;
+	private boolean isFirst = true;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_single_event);
+		setContentView(R.layout.activity_single_note);
 
-		id = (TextView) findViewById(R.id.textView_event_id);
-		tewxtView_title = (TextView) findViewById(R.id.textView_event_title);
-		tewxtView_description = (TextView) findViewById(R.id.textView_event_description);
+		imageView_one = (ImageView) findViewById(R.id.imageView_note_one);
+		imageView_two = (ImageView) findViewById(R.id.imageView_note_tow);
+		note_id = (TextView) findViewById(R.id.textView_id_note_view);
+		note_title = (TextView) findViewById(R.id.textView_title_note_view);
+		note_description = (TextView) findViewById(R.id.textView_description_note_view);
 	}
 
-	public void deleteEvent(View view) {
-		DeleteEvent deleter = new DeleteEvent();
-		deleter.execute("http://mobileorganizer.apphb.com/api/events/delete/" + id.getText());
-	}
-	
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
 
-		int idFromIntent = getIntent().getIntExtra("eventId", -1);
-		id.setText(String.valueOf(idFromIntent));
-		
-		GetEvent getter = new GetEvent();
-		getter.execute("http://mobileorganizer.apphb.com/api/events/getById/" + idFromIntent);
+		int id = getIntent().getIntExtra("noteId", -1);
+
+		GetNote getter = new GetNote();
+		getter.execute("http://mobileorganizer.apphb.com/api/notes/getById/"
+				+ id);
 	}
-	
-	private class GetEvent extends AsyncTask<String, Void, String> {
+
+	private class GetNote extends AsyncTask<String, Void, String> {
 
 		private Dialog progress;
-		private Event event = new Event();
+		private Note note = new Note();
 
 		@Override
 		protected String doInBackground(String... params) {
@@ -114,23 +122,35 @@ public class SingleEventActivity extends Activity {
 			// userDb.addUser(email, authCode, sessionKey);
 			progress.dismiss();
 			try {
+				GetImage getter = new GetImage();
+
 				JSONObject jsonObj = new JSONObject(result);
-				int id = Integer.parseInt(jsonObj.getString("Id"));
+				List<String> paths = new ArrayList<String>();
+				// int id = Integer.parseInt(jsonObj.getString("Id"));
 				String title = jsonObj.getString("Title");
 				String description = jsonObj.getString("Description");
+				String imagesUrls = jsonObj.getString("ImagesUrls");
 
-				event.setId(id);
-				event.setTitle(title);
-				event.setDescription(description);
-				
-				tewxtView_title.setText(event.getTitle());
-				tewxtView_description.setText(event.getDescription());		
+				JSONArray jsonArray = new JSONArray(imagesUrls);
+				for (int i = 0; i < jsonArray.length(); i++) {
+					JSONObject explrObject = jsonArray.getJSONObject(i);
+					paths.add(explrObject.getString("Path"));
+				}
+
+				getter.execute(new String[] { paths.get(0), paths.get(1) });
+				// todo.setId(id);
+				note.setTitle(title);
+				note.setDescription(description);
+
+				note_title.setText(note.getTitle());
+				note_description.setText(note.getDescription());
+
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
-			Toast.makeText(SingleEventActivity.this, result, Toast.LENGTH_LONG)
+			Toast.makeText(SingleNoteActivity.this, result, Toast.LENGTH_LONG)
 					.show();
 		}
 
@@ -138,78 +158,55 @@ public class SingleEventActivity extends Activity {
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
 			super.onPreExecute();
-			progress = ProgressDialog.show(SingleEventActivity.this,
+			progress = ProgressDialog.show(SingleNoteActivity.this,
 					"Loading...", "Please wait");
 			progress.setCancelable(true);
 			progress.show();
 		}
 	}
-	
-	private class DeleteEvent extends AsyncTask<String, Void, String> {
+
+	private class GetImage extends AsyncTask<String, Void, Void> {
 
 		private Dialog progress;
 
 		@Override
-		protected String doInBackground(String... params) {
-			HttpClient client = new DefaultHttpClient();
-			HttpPost post = new HttpPost(params[0]);
-			HttpResponse dsd = null;
-			try {
-				FileInputStream os = null;
+		protected Void doInBackground(String... params) {
+			for (int i = 0; i < params.length; i++) {
+				URL url = null;
 				try {
-					os = openFileInput("sessionKey");
-				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-				BufferedReader r = new BufferedReader(new InputStreamReader(os));
-				StringBuilder total = new StringBuilder();
-				String line;
-				try {
-					while ((line = r.readLine()) != null) {
-						total.append(line);
-					}
-				} catch (IOException e) {
+					url = new URL(params[i]);
+				} catch (MalformedURLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
-				post.setHeader("X-sessionKey", total.toString());
-				dsd = client.execute(post);
-			} catch (Exception e) {
-
+				Bitmap bmp = null;
+				try {
+					bmp = BitmapFactory.decodeStream(url.openConnection()
+							.getInputStream());
+					images.add(bmp);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-			
-			int code = dsd.getStatusLine().getStatusCode();
-			
-			return String.valueOf(code);
+
+			return null;
 		}
 
 		@Override
-		protected void onPostExecute(String result) {
+		protected void onPostExecute(Void result) {
 			// UserDb userDb =
 			// ((OrganizerApplication)getApplication()).getUserDb();
 			//
 			// userDb.addUser(email, authCode, sessionKey);
-			progress.dismiss();
-			
-			if(result.equals("200")) {
-				
+
+			if (isFirst) {
+				imageView_one.setImageBitmap(images.get(0));
+				isFirst = false;
+			} else {
+				imageView_two.setImageBitmap(images.get(1));
 			}
-
-			Toast.makeText(SingleEventActivity.this, "Deleted", Toast.LENGTH_LONG)
-			.show();
-		}
-
-		@Override
-		protected void onPreExecute() {
-			// TODO Auto-generated method stub
-			super.onPreExecute();
-			progress = ProgressDialog.show(SingleEventActivity.this,
-					"Loading...", "Please wait");
-			progress.setCancelable(true);
-			progress.show();
 		}
 	}
 }

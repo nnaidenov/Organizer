@@ -4,36 +4,43 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView_todo_id"
+     <TextView
+        android:id="@+id/textView_id_note_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/textView_title_note_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/textView_todo_title"
+        android:id="@+id/textView_description_note_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/textView_todo_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <ToggleButton
-        android:id="@+id/toggleButton_todo_is_done"
+    <ImageView
+        android:id="@+id/imageView_note_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textOff="Not done"
-        android:textOn="Done" />
+        android:src="@drawable/ic_launcher" />
+    
+      <ImageView
+        android:id="@+id/imageView_note_tow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_launcher" />
 
-    <Button
-        android:id="@+id/button_delete_todo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="deteleTodo"
-        android:text="Delete" />
+      <Button
+          android:id="@+id/button_delete_note"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Delete" />
 
 </LinearLayout>

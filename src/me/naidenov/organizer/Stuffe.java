@@ -7,6 +7,15 @@ public class Stuffe {
 	private String Type;
 	private int Id;
 	private Date Date;
+	private int ListPossiton;
+
+	public int getListPossiton() {
+		return ListPossiton;
+	}
+
+	public void setListPossiton(int listPossiton) {
+		ListPossiton = listPossiton;
+	}
 
 	public String getTitle() {
 		return Title;

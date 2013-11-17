@@ -30,6 +30,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 	private Button createTodo;
 	private Button createEvent;
 	private Button createNote;
+	private Button viewNotes;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 
 		calendar = (Button) findViewById(R.id.button_calendar_view);
 		calendar.setOnClickListener(this);
-		
+
 		createTodo = (Button) findViewById(R.id.button_create_todo_view);
 		createTodo.setOnClickListener(this);
 
@@ -48,6 +49,9 @@ public class HomeActivity extends Activity implements OnClickListener {
 
 		createNote = (Button) findViewById(R.id.button_create_note_view);
 		createNote.setOnClickListener(this);
+
+		viewNotes = (Button) findViewById(R.id.button_view_notes);
+		viewNotes.setOnClickListener(this);
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -73,6 +77,10 @@ public class HomeActivity extends Activity implements OnClickListener {
 		} else if (view.getId() == R.id.button_calendar_view) {
 			Intent intent = new Intent(HomeActivity.this,
 					CalendarMonthViewActivity.class);
+			startActivity(intent);
+		} else if (view.getId() == R.id.button_view_notes) {
+			Intent intent = new Intent(HomeActivity.this,
+					NotesActivity.class);
 			startActivity(intent);
 		}
 	}
