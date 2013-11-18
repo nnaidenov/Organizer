@@ -1,17 +1,37 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
     <Button
         android:id="@+id/button_login_view"
+        style="@style/SimpleButtons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="22dp"
         android:text="@string/button_login" />
 
     <Button
         android:id="@+id/button_register_view"
+        style="@style/SimpleButtons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button_login_view"
+        android:layout_alignBottom="@+id/button_login_view"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="43dp"
         android:text="@string/button_register" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textView_main"
+        android:textSize="24sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="67dp"
+        android:text="@string/main_text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

@@ -21,6 +21,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -118,6 +119,8 @@ public class MonthViewActivity extends ListActivity {
 			return sb.toString();
 		}
 
+		@SuppressLint("SimpleDateFormat")
+		@SuppressWarnings("deprecation")
 		@Override
 		protected void onPostExecute(String result) {
 			// UserDb userDb =
@@ -160,8 +163,7 @@ public class MonthViewActivity extends ListActivity {
 				e.printStackTrace();
 			}
 
-			Calendar cal = Calendar.getInstance();
-			Calendar mycal = new GregorianCalendar(cal.YEAR, cal.MONTH + 1, 1);
+			Calendar mycal = new GregorianCalendar(Calendar.YEAR, Calendar.MONTH + 1, 1);
 
 			// Get the number of days in that month
 			int daysInMonth = mycal.getActualMaximum(Calendar.DAY_OF_MONTH); // 28

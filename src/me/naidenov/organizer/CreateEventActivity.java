@@ -7,10 +7,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -18,25 +16,20 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.app.AlertDialog.Builder;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.DialogInterface;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -67,12 +60,14 @@ public class CreateEventActivity extends FragmentActivity implements
 	private Button create;
 	private Button cancel;
 
-	private Button setTime;
-
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_event);
+		
+		DisplayMetrics displaymetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+		int width = displaymetrics.widthPixels;
 
 		title = (EditText) findViewById(R.id.editText_event_title);
 		description = (EditText) findViewById(R.id.editText_event_description);
@@ -95,6 +90,10 @@ public class CreateEventActivity extends FragmentActivity implements
 		create.setOnClickListener(this);
 
 		cancel = (Button) findViewById(R.id.button_create_back);
+		cancel.setOnClickListener(this);
+		
+		create.setWidth(width / 2);
+		cancel.setWidth(width / 2);
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -103,6 +102,7 @@ public class CreateEventActivity extends FragmentActivity implements
 		return true;
 	}
 
+	@SuppressLint("SimpleDateFormat")
 	@Override
 	public void onClick(View v) {
 		if (v.getId() == R.id.button_create_event_save) {
@@ -183,6 +183,10 @@ public class CreateEventActivity extends FragmentActivity implements
 			creater.execute(new String[] {
 					"http://mobileorganizer.apphb.com/api/events/create",
 					createEventModel });
+		} else if(v.getId() == R.id.button_create_back) {
+			Intent intent = new Intent(CreateEventActivity.this,
+					HomeActivity.class);
+			startActivity(intent);
 		} else if (v.getId() == R.id.toggleButton_event_whole_day) {
 			if (whole_day.isChecked()) {
 				text_view_start_time.setVisibility(View.GONE);
@@ -198,7 +202,7 @@ public class CreateEventActivity extends FragmentActivity implements
 		} else if (v.getId() == R.id.button_event_start_time) {
 
 			final Dialog dialog = new Dialog(this);
-			dialog.setContentView(R.layout.sdfsa);
+			dialog.setContentView(R.layout.dialog_date_selector);
 			dialog.setTitle("Save New Number");
 			dialog.setCancelable(true);
 			TimePicker tp = (TimePicker) dialog.findViewById(R.id.timePicker1);
@@ -248,7 +252,7 @@ public class CreateEventActivity extends FragmentActivity implements
 		} else if (v.getId() == R.id.button_event_end_time) {
 
 			final Dialog dialog = new Dialog(this);
-			dialog.setContentView(R.layout.sdfsa);
+			dialog.setContentView(R.layout.dialog_date_selector);
 			dialog.setTitle("Save New Number");
 			TimePicker tp = (TimePicker) dialog.findViewById(R.id.timePicker1);
 			tp.setIs24HourView(true);
@@ -339,6 +343,9 @@ public class CreateEventActivity extends FragmentActivity implements
 			progress.dismiss();
 			Toast.makeText(CreateEventActivity.this, "Created",
 					Toast.LENGTH_LONG).show();
+			Intent intent = new Intent(CreateEventActivity.this,
+					HomeActivity.class);
+			startActivity(intent);
 		}
 
 		@Override

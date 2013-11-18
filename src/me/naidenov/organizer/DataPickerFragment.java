@@ -3,13 +3,13 @@ package me.naidenov.organizer;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.widget.DatePicker;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class DataPickerFragment extends DialogFragment implements
 		DatePickerDialog.OnDateSetListener {
@@ -26,6 +26,7 @@ public class DataPickerFragment extends DialogFragment implements
 		return new DatePickerDialog(getActivity(), this, year, month, day);
 	}
 
+	@SuppressLint("SimpleDateFormat")
 	public void onDateSet(DatePicker view, int year, int month, int day) {
 
 		if (getActivity().getClass().equals(CreateTodoActivity.class)) {

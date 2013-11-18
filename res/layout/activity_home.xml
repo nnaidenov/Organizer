@@ -5,6 +5,7 @@
 
     <Button
         android:id="@+id/button_calendar_view"
+        style="@style/SimpleButtons"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_calendar_view" />
@@ -22,12 +23,14 @@
 
             <Button
                 android:id="@+id/button_create_todo_view"
+                style="@style/SimpleButtons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/button_create_todo_view" />
 
             <Button
                 android:id="@+id/button_create_event_view"
+                style="@style/SimpleButtons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/button_create_event_view" />
@@ -42,6 +45,7 @@
 
         <Button
             android:id="@+id/button_create_note_view"
+            style="@style/SimpleButtons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_create_note_view" />
@@ -49,8 +53,9 @@
 
     <Button
         android:id="@+id/button_view_notes"
+        style="@style/SimpleButtons"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="View Notes" />
+        android:text="@string/view_notes" />
 
 </LinearLayout>

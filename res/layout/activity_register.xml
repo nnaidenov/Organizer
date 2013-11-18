@@ -6,33 +6,38 @@
 
     <EditText
         android:id="@+id/editText_email_register"
+        style="@style/InputsStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10" 
-        android:inputType="textEmailAddress"
-        android:hint="@string/editText_email">
+        android:ems="10"
+        android:hint="@string/editText_email"
+        android:inputType="textEmailAddress" >
+
         <requestFocus />
     </EditText>
 
     <EditText
         android:id="@+id/editText_password_register"
+        style="@style/InputsStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPassword" 
-        android:hint="@string/editText_password"/>
+        android:hint="@string/editText_password"
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/editText_rePassword_register"
+        style="@style/InputsStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPassword" 
-        android:hint="@string/editText_rePassord"/>
+        android:hint="@string/editText_rePassord"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/button_register"
-        android:layout_width="wrap_content"
+        style="@style/SimpleButtons"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_register" />
 

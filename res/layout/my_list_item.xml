@@ -12,11 +12,10 @@
         android:clickable="false"
         android:gravity="center"
         android:longClickable="false"
-        android:paddingBottom="1dip"
-        android:paddingTop="1dip"
-        android:text="sample"
+        android:paddingBottom="1dp"
+        android:paddingTop="1dp"
         android:textColor="#ff7f1d"
-        android:textSize="17dip"
+        android:textSize="17sp"
         android:textStyle="bold" />
 
     <TextView
@@ -30,8 +29,7 @@
         android:longClickable="false"
         android:paddingBottom="1dip"
         android:paddingTop="1dip"
-        android:text="sample"
         android:textColor="#6d6d6d"
-        android:textSize="17dip" />
+        android:textSize="17sp" />
 
 </LinearLayout>

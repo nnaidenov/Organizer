@@ -19,7 +19,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.R.bool;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -36,7 +35,6 @@ public class SingleNoteActivity extends Activity {
 	private List<Bitmap> images = new ArrayList<Bitmap>();
 	private ImageView imageView_one;
 	private ImageView imageView_two;
-	private TextView note_id;
 	private TextView note_title;
 	private TextView note_description;
 	private boolean isFirst = true;
@@ -48,7 +46,6 @@ public class SingleNoteActivity extends Activity {
 
 		imageView_one = (ImageView) findViewById(R.id.imageView_note_one);
 		imageView_two = (ImageView) findViewById(R.id.imageView_note_tow);
-		note_id = (TextView) findViewById(R.id.textView_id_note_view);
 		note_title = (TextView) findViewById(R.id.textView_title_note_view);
 		note_description = (TextView) findViewById(R.id.textView_description_note_view);
 	}
@@ -166,8 +163,6 @@ public class SingleNoteActivity extends Activity {
 	}
 
 	private class GetImage extends AsyncTask<String, Void, Void> {
-
-		private Dialog progress;
 
 		@Override
 		protected Void doInBackground(String... params) {

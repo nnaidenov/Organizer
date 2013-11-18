@@ -20,28 +20,18 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Point;
-import android.inputmethodservice.Keyboard.Row;
-import android.net.ParseException;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class WeekViewActivity extends Activity {
 
@@ -268,6 +258,7 @@ public class WeekViewActivity extends Activity {
 			return sb.toString();
 		}
 
+		@SuppressLint("SimpleDateFormat")
 		@Override
 		protected void onPostExecute(String result) {
 			// UserDb userDb =
@@ -302,6 +293,7 @@ public class WeekViewActivity extends Activity {
 					Calendar c = Calendar.getInstance(); 
 					c.setTime(startDate);
 					int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+					@SuppressWarnings("deprecation")
 					int[] selectedDate = new int[] { startDate.getMonth(),
 							startDate.getDate(), startDate.getYear() + 1900 };
 

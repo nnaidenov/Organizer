@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +25,6 @@ import org.json.JSONObject;
 
 import com.cloudinary.Cloudinary;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -38,10 +36,10 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -49,7 +47,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.Toast;
 
 public class CreateNoteActivity extends Activity implements OnClickListener {
@@ -71,6 +68,7 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 	private String mCapturedImageURI;
 
 	private Button save_button;
+	private Button button_note_back;
 	private String newNoteModel;
 
 	private int readyToSend = 0;
@@ -79,6 +77,10 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_note);
+
+		DisplayMetrics displaymetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+		int width = displaymetrics.widthPixels;
 
 		PackageManager pm = this.getPackageManager();
 		boolean hasCamera = pm.hasSystemFeature(PackageManager.FEATURE_CAMERA);
@@ -92,7 +94,7 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 
 		photo_button = (Button) findViewById(R.id.button_note_photo);
 		photo_button.setOnClickListener(this);
-		
+
 		if (hasCamera) {
 			camera_button.setOnClickListener(this);
 		} else {
@@ -101,6 +103,11 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 
 		save_button = (Button) findViewById(R.id.button_note_save);
 		save_button.setOnClickListener(this);
+
+		button_note_back = (Button) findViewById(R.id.button_note_back);
+
+		save_button.setWidth(width / 2);
+		button_note_back.setWidth(width / 2);
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -292,7 +299,7 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 
 			InputStream is = arg0[0];
 
-			Map config = new HashMap();
+			Map<String, String> config = new HashMap<String, String>();
 			config.put("cloud_name", "djlwcsyiz");
 			config.put("api_key", "781383948985498");
 			config.put("api_secret", "Vh5BQmeTxvSKvTGTg-wRDYKqPz4");
@@ -417,6 +424,5 @@ public class CreateNoteActivity extends Activity implements OnClickListener {
 					"Please wait");
 			progress.show();
 		}
-
 	}
 }

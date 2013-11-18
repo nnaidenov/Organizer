@@ -13,6 +13,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -53,6 +54,7 @@ public class CreateTodoActivity extends FragmentActivity implements
 		save_button = (Button) findViewById(R.id.button_create_todo_save);
 		save_button.setOnClickListener(this);
 		back_button = (Button) findViewById(R.id.button_create_todo_back);
+		back_button.setOnClickListener(this);
 		save_button.setWidth(width / 2);
 		back_button.setWidth(width / 2);
 
@@ -100,7 +102,11 @@ public class CreateTodoActivity extends FragmentActivity implements
 					"http://mobileorganizer.apphb.com/api/Todos/create",
 					createTodoModel });
 
-		}
+		}else if(v.getId() == R.id.button_create_todo_back) {
+			Intent intent = new Intent(CreateTodoActivity.this,
+					HomeActivity.class);
+			startActivity(intent);
+		} 
 	}
 
 	private class CreateTodo extends AsyncTask<String, Void, Void> {
@@ -150,6 +156,9 @@ public class CreateTodoActivity extends FragmentActivity implements
 			progress.dismiss();
 			Toast.makeText(CreateTodoActivity.this, "Created",
 					Toast.LENGTH_LONG).show();
+			Intent intent = new Intent(CreateTodoActivity.this,
+					HomeActivity.class);
+			startActivity(intent);
 		}
 
 		@Override

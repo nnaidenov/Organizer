@@ -4,43 +4,43 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-     <TextView
+    <TextView
         android:id="@+id/textView_id_note_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    
+
     <TextView
         android:id="@+id/textView_title_note_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/textView_description_note_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ImageView
         android:id="@+id/imageView_note_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/image"
         android:src="@drawable/ic_launcher" />
-    
-      <ImageView
+
+    <ImageView
         android:id="@+id/imageView_note_tow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/image"
         android:src="@drawable/ic_launcher" />
 
-      <Button
-          android:id="@+id/button_delete_note"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Delete" />
+    <Button
+        android:id="@+id/button_delete_note"
+        style="@style/InButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_delete" />
 
 </LinearLayout>

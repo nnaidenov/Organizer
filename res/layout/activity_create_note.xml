@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollView1"
+    style="@style/CreateNote"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="match_parent" >
 
     <LinearLayout
         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical" >
 
         <EditText
@@ -30,42 +31,50 @@
 
         <Button
             android:id="@+id/button_note_camera"
-            android:layout_width="wrap_content"
+            style="@style/InButtons"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/button_note_camera" />      
+            android:text="@string/button_note_camera" />
 
-         <ImageView
+        <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:contentDescription="@string/image"
             android:layout_height="50dp"
+            android:contentDescription="@string/image"
             android:src="@drawable/ic_launcher" />
-        
+
         <Button
             android:id="@+id/button_note_photo"
-            android:layout_width="wrap_content"
+            style="@style/InButtons"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/button_note_photo" />
 
         <ImageView
             android:id="@+id/photoView"
             android:layout_width="match_parent"
-            android:contentDescription="@string/image"
             android:layout_height="50dp"
+            android:contentDescription="@string/image"
             android:src="@drawable/ic_launcher" />
 
-        <Button
-            android:id="@+id/button_note_save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_save" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/button_note_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_back" />
+            <Button
+                android:id="@+id/button_note_save"
+                style="@style/InButtons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_save" />
 
+            <Button
+                android:id="@+id/button_note_back"
+                style="@style/InButtons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_back" />
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>

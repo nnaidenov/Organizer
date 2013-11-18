@@ -8,12 +8,10 @@ import android.widget.TextView;
 public class ListItem implements Item {
 	private final String str1;
 	private final String str2;
-	private final LayoutInflater inflater;
-
+	
 	public ListItem(LayoutInflater inflater, String text1, String text2) {
 		this.str1 = text1;
 		this.str2 = text2;
-		this.inflater = inflater;
 	}
 
 	@Override

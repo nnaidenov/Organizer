@@ -6,6 +6,7 @@
 
     <EditText
         android:id="@+id/editText_email_login"
+        style="@style/InputsStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -17,6 +18,7 @@
 
     <EditText
         android:id="@+id/editText_password_login"
+        style="@style/InputsStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -25,7 +27,8 @@
 
     <Button
         android:id="@+id/button_login"
-        android:layout_width="wrap_content"
+        style="@style/InButtons"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_login" />
 

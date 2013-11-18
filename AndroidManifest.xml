@@ -19,7 +19,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name="OrganizerApplication"
         android:allowBackup="true"
         android:allowClearUserData="true"
         android:allowTaskReparenting="true"

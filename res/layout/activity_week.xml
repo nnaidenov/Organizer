@@ -27,7 +27,7 @@
                 android:id="@+id/textView_firstDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Неделя" />
+                android:text="@string/sunday" />
         </LinearLayout>
 
         <LinearLayout
@@ -41,7 +41,7 @@
                 android:id="@+id/textView_secondDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Понеделник" />
+                android:text="@string/monday" />
         </LinearLayout>
     </TableRow>
 
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Вторник" />
+                android:text="@string/tuesday" />
         </LinearLayout>
 
         <LinearLayout
@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Сряда" />
+                android:text="@string/wednesday" />
         </LinearLayout>
     </TableRow>
 
@@ -104,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Четвъртък" />
+                android:text="@string/thursday" />
         </LinearLayout>
 
         <LinearLayout
@@ -119,7 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Петък" />
+                android:text="@string/friday" />
         </LinearLayout>
     </TableRow>
 
@@ -143,7 +143,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Събота" />
+                android:text="@string/saturday" />
         </LinearLayout>
     </TableRow>
 

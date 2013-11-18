@@ -32,19 +32,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class RegisterActivity extends Activity implements OnClickListener{
-	
+public class RegisterActivity extends Activity implements OnClickListener {
+
 	private Button button_register;
 	private EditText editorText_email;
 	private EditText editorText_password;
 	private EditText editorText_rePassword;
 	private String registerModel;
 	private ProgressDialog progress;
-	
+
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
-		
+
 		editorText_email = (EditText) findViewById(R.id.editText_email_register);
 		editorText_password = (EditText) findViewById(R.id.editText_password_register);
 		editorText_rePassword = (EditText) findViewById(R.id.editText_rePassword_register);
@@ -59,16 +59,32 @@ public class RegisterActivity extends Activity implements OnClickListener{
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
+
 	@Override
 	public void onClick(View v) {
 		if (v.getId() == R.id.button_register) {
 			String email = String.valueOf(editorText_email.getText());
 			String password = String.valueOf(editorText_password.getText());
 			String rePassword = String.valueOf(editorText_rePassword.getText());
-			
+
+			if (email.trim().equals("")) {
+				editorText_email.setError("E-mail is required!");
+				return;
+				// You can Toast a message here that the Username is Empty
+			}
+			if (password.trim().equals("")) {
+				editorText_password.setError("Password is required!");
+				return;
+				// You can Toast a message here that the Username is Empty
+			}
+			if (rePassword.trim().equals("")) {
+				editorText_rePassword.setError("Re-Password is required!");
+				return;
+				// You can Toast a message here that the Username is Empty
+			}
 			if (!password.equals(rePassword)) {
-				Toast.makeText(this, "Authentication Failed...", Toast.LENGTH_SHORT).show();
+				editorText_rePassword
+						.setError("Password and Re-Password are not same!");
 				return;
 			}
 
@@ -79,7 +95,7 @@ public class RegisterActivity extends Activity implements OnClickListener{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			JSONObject object = new JSONObject();
 			try {
 				object.put("email", email);
@@ -87,14 +103,16 @@ public class RegisterActivity extends Activity implements OnClickListener{
 
 			} catch (Exception ex) {
 			}
-			
+
 			registerModel = object.toString();
 			RegisterUser register = new RegisterUser();
-			register.execute(new String[] {"http://mobileorganizer.apphb.com/api/users/register",registerModel});
+			register.execute(new String[] {
+					"http://mobileorganizer.apphb.com/api/users/register",
+					registerModel });
 		}
-		
+
 	}
-	
+
 	private class RegisterUser extends AsyncTask<String, Void, Void> {
 
 		private String result;
@@ -103,11 +121,16 @@ public class RegisterActivity extends Activity implements OnClickListener{
 		protected Void doInBackground(String... params) {
 			HttpClient client = new DefaultHttpClient();
 			HttpPost post = new HttpPost(params[0]);
-			
+
 			try {
 				post.setEntity(new StringEntity(params[1], "UTF8"));
 				post.setHeader("Content-type", "application/json");
 				HttpResponse response = client.execute(post);
+
+				if (response.getStatusLine().getStatusCode() != 201) {
+					result = "No";
+					return null;
+				}
 
 				HttpEntity entity = response.getEntity();
 				InputStream webs = entity.getContent();
@@ -131,17 +154,19 @@ public class RegisterActivity extends Activity implements OnClickListener{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			JSONObject obj;
 			try {
 				obj = new JSONObject(result);
 				String sessionKey = obj.getString("sessionKey");
-				
-				OutputStream os = openFileOutput("sessionKey", Context.MODE_PRIVATE);
+
+				OutputStream os = openFileOutput("sessionKey",
+						Context.MODE_PRIVATE);
 				os.write(sessionKey.getBytes());
 				os.close();
-				
-				Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+				result = "No";
+				Intent intent = new Intent(RegisterActivity.this,
+						HomeActivity.class);
 				startActivity(intent);
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -158,23 +183,31 @@ public class RegisterActivity extends Activity implements OnClickListener{
 		}
 
 		@Override
-		protected void onPostExecute(Void result) {
-//			UserDb userDb = ((OrganizerApplication)getApplication()).getUserDb();
-//			
-//			userDb.addUser(email, authCode, sessionKey);
+		protected void onPostExecute(Void res) {
+			// UserDb userDb =
+			// ((OrganizerApplication)getApplication()).getUserDb();
+			//
+			// userDb.addUser(email, authCode, sessionKey);
+
 			progress.dismiss();
+
+			if (result.equals("No")) {
+				Toast.makeText(RegisterActivity.this, "Wrong e-mail!",
+						Toast.LENGTH_LONG).show();
+			}
 		}
 
 		@Override
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
 			super.onPreExecute();
-			progress = ProgressDialog.show(RegisterActivity.this, "Wait", "Please wait");
+			progress = ProgressDialog.show(RegisterActivity.this, "Wait",
+					"Please wait");
 			progress.show();
-		}	
-		
+		}
+
 	}
-	
+
 	static String sha1(String input) throws NoSuchAlgorithmException {
 		MessageDigest mDigest = MessageDigest.getInstance("SHA1");
 		byte[] result = mDigest.digest(input.getBytes());

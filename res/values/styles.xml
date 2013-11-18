@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -15,6 +15,39 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="SimpleButtons">
+        <item name="android:background">#B3D133</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:height">100dp</item>
+        <item name="android:width">100dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+    <style name="InButtons">
+        <item name="android:background">#B3D133</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+    <style name="CreateNote">
+        <item name="android:background">#FFFFFF</item>
+    </style>
+
+    <style name="CreateEvent">
+        <item name="android:background">#FF0000</item>
+    </style>
+
+    <style name="CreateTodo">
+        <item name="android:background">#0000FF</item>
+    </style>
+
+    <style name="InputsStyle">
+        <item name="android:textSize">30sp</item>
     </style>
 
 </resources>

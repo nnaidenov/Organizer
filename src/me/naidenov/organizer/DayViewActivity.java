@@ -13,28 +13,20 @@ import java.util.List;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class DayViewActivity extends Activity {
@@ -47,7 +39,7 @@ public class DayViewActivity extends Activity {
 		setContentView(R.layout.activity_day_view);
 
 		View empty = findViewById(R.id.empty);
-		ListView list = (ListView) findViewById(R.id.asdf);
+		ListView list = (ListView) findViewById(R.id.listView_day_stuffs);
 		list.setEmptyView(empty);
 
 		int[] date = getIntent().getIntArrayExtra("selectedDate");
@@ -148,7 +140,7 @@ public class DayViewActivity extends Activity {
 			Toast.makeText(DayViewActivity.this, result, Toast.LENGTH_LONG)
 					.show();
 
-			final ListView lv = (ListView) findViewById(R.id.asdf);
+			final ListView lv = (ListView) findViewById(R.id.listView_day_stuffs);
 			StuffesAdapter adapter = new StuffesAdapter(DayViewActivity.this,
 					R.layout.day_list_row_stuffe, mySuffes);
 			lv.setAdapter(adapter);
